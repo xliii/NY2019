@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Boo.Lang.Runtime;
+﻿using Boo.Lang.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +7,7 @@ public class ColorButton : MonoBehaviour
 {
 	public int index;
 
-	private Dictionary<char, Color> colors = new Dictionary<char, Color>();
+	private NamedColor[] _colors;
 
 	private Image image;
 
@@ -22,12 +20,9 @@ public class ColorButton : MonoBehaviour
 		image = GetComponent<Image>();
 	}
 
-	private void Start()
+	public void SetColors(NamedColor[] colors)
 	{
-		colors['R'] = fromHex("#FD3131");
-		colors['B'] = fromHex("#1ACA1A");
-		colors['G'] = fromHex("#2D2DD4");
-		colors['Y'] = fromHex("#D1C42C");
+		_colors = colors;
 	}
 
 	private Color fromHex(string color)
@@ -43,9 +38,9 @@ public class ColorButton : MonoBehaviour
 
 	public void CycleColors()
 	{
-		selectedColor = (selectedColor + 1) % colors.Count;
-		var key = colors.Keys.ElementAt(selectedColor);
-		image.color = colors[key];
-		Messenger<int, char>.Broadcast(ColorController.Event.ColorChanged, index, key);
+		selectedColor = (selectedColor + 1) % _colors.Length;
+		var color = _colors[selectedColor];
+		image.color = color.color;
+		Messenger<int, char>.Broadcast(ColorController.Event.ColorChanged, index, color.code);
 	}
 }

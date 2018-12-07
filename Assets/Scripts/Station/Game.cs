@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Boo.Lang.Runtime;
+using UnityEngine;
 
 public class Game : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class Game : MonoBehaviour
 
 	private void OnMessageReceived(string code)
 	{
+		if (code.Length != _level.PassCode.Length)
+		{
+			throw new RuntimeException("Bad PassCode length: Expected " + _level.PassCode.Length + ", got " + code.Length);
+		}
+		
 		if (_level.PassCode == code)
 		{
 			NextLevel();

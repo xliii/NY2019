@@ -13,10 +13,14 @@
             </e>
           </e>
         </e>
+        <e p="Script.txt" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Colors" t="Include">
             <e p="ColorButton.cs" t="Include" />
+            <e p="ColorButtonFactory.cs" t="Include" />
             <e p="ColorController.cs" t="Include" />
+            <e p="ColorSet.cs" t="Include" />
+            <e p="NamedColor.cs" t="Include" />
           </e>
           <e p="Messenger" t="Include">
             <e p="Messenger.cs" t="Include" />

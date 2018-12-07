@@ -14,25 +14,25 @@ public class ServerStatus : NetworkStatus {
 
 	private void OnMessageReceived(string message)
 	{
-		Debug.Log("Server: Received - " + message);
+		Debug.Log("Server: Received - " + message, this);
 		BlinkColor(Color.white);
 	}
 
 	private void OnStart(string ip)
 	{
-		Debug.Log("Server: Started - " + ip);
+		Debug.Log("Server: Started - " + ip, this);
 		SetColor(Color.blue);
 	}
 
 	private void OnConnect()
 	{
-		Debug.Log("Server: Client connected");
+		Debug.Log("Server: Client connected", this);
 		SetColor(Color.green);
 	}
 
 	private void OnDisconnect()
 	{
-		Debug.Log("Server: Client disconnected");
+		Debug.Log("Server: Client disconnected", this);
 		SetColor(Color.red);
 	}
 }

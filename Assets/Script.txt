@@ -1,0 +1,20 @@
+Levels
+
+* Different colors
+* Same colors
+* Objects matching colors
+* Add more colors
+* ?
+* Upgrade to 3x3
+* 3x3
+* Rubick's cube
+
+
+Mechanics
+
+Hold Button: toggle to add/remove button
+Hold Multiple buttons: merge buttons
+
+
+Analog:
+Portalesque posters

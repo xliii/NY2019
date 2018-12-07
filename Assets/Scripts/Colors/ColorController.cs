@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Boo.Lang.Runtime;
 using UnityEngine;
 
 [RequireComponent(typeof(Server))]
@@ -13,7 +14,7 @@ public class ColorController : MonoBehaviour {
 
 	private const char EMPTY = '-';
 
-	private char[] colors = {EMPTY, EMPTY, EMPTY, EMPTY};
+	private char[] _colors;
 	
 	void Awake ()
 	{
@@ -21,12 +22,22 @@ public class ColorController : MonoBehaviour {
 		Messenger<int, char>.AddListener(Event.ColorChanged, OnColorChanged);
 	}
 
+	public void Initialize(int size)
+	{
+		_colors = Enumerable.Repeat(EMPTY, size).ToArray();
+	}
+
 	private void OnColorChanged(int index, char color)
 	{
-		colors[index] = color;
+		if (index >= _colors.Length)
+		{
+			throw new RuntimeException("Color out of range. Size: " + _colors.Length + ", Actual: " + index);
+		}
+		
+		_colors[index] = color;
 		if (IsValid())
 		{
-			var message = new string(colors);
+			var message = new string(_colors);
 			Debug.Log("Sending colors: " + message);
 			server.Send(message);
 		};
@@ -34,6 +45,6 @@ public class ColorController : MonoBehaviour {
 
 	private bool IsValid()
 	{
-		return colors.All(c => c != EMPTY);
+		return _colors.All(c => c != EMPTY);
 	}
 }
