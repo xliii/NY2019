@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(GridLayoutGroup))]
@@ -15,12 +14,7 @@ public class ColorButtonFactory : MonoBehaviour
 	private ColorSet ColorSet;
 
 	[SerializeField]
-	[Range(2, 4)]
-	private int FieldSize = 2;
-
-	[SerializeField]
-	[Range(3, 5)]
-	private int NumberOfColors = 4;
+	private Level Level;
 
 	private GridLayoutGroup _grid;
 
@@ -42,20 +36,20 @@ public class ColorButtonFactory : MonoBehaviour
 	{
 		ClearChildren();
 		SetupGrid();
-		int size = FieldSize * FieldSize;
+		int size = Level.Size * Level.Size;
 		ColorController.Initialize(size);
 		for (int i = 0; i < size; i++)
 		{
 			var colorButton = Instantiate(buttonPrefab, transform);
 			colorButton.index = i;
-			colorButton.SetColors(ColorSet.GetColors(NumberOfColors));
+			colorButton.SetColors(ColorSet.GetColors(Level.Colors));
 		}
 	}
 
 	private void SetupGrid()
 	{
-		_grid.constraintCount = FieldSize;
-		_grid.cellSize = Vector2.one * (120 - 10 * FieldSize);
+		_grid.constraintCount = Level.Size;
+		_grid.cellSize = Vector2.one * (120 - 10 * Level.Size);
 	}
 }
 	

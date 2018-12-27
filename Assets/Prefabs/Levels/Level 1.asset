@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   LevelName: First Steps
+  Size: 2
+  Colors: GBR
   PassCode: RRRR
   Image: {fileID: 21300000, guid: 7c3beffd355432c45ad90cc7f8252518, type: 3}

@@ -9,12 +9,4 @@ Levels
 * 3x3
 * Rubick's cube
 
-
-Mechanics
-
-Hold Button: toggle to add/remove button
-Hold Multiple buttons: merge buttons
-
-
-Analog:
-Portalesque posters
+1. 2x2(1) RRRR

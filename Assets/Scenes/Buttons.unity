@@ -620,8 +620,7 @@ MonoBehaviour:
     type: 2}
   ColorController: {fileID: 389219685}
   ColorSet: {fileID: 11400000, guid: 088ca3f254b5f7140a22fd8c1add47f3, type: 2}
-  FieldSize: 2
-  NumberOfColors: 3
+  Level: {fileID: 11400000, guid: fc90da5da5eb34c4aa8573723e3c4f62, type: 2}
 --- !u!114 &815475094
 MonoBehaviour:
   m_ObjectHideFlags: 0
